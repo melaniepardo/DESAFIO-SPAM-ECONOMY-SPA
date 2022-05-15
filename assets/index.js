@@ -1,20 +1,3 @@
-//1. Usar el paquete nodemailer para el envío de correos electrónicos.
-
-//2. Crear una función que reciba la lista de correos, asunto y contenido a enviar.Esta
-//función debe retornar una promesa.
-
-
-//3. Realizar una petición a la api de mindicador.cl y preparar un template que incluya los
-//valores del dólar, euro, uf y utm.Este template debe ser concatenado al contenido
-//descrito por el usuario en el formulario HTML.
-
-//4. Enviar un contenido de éxito o error por cada intento de envío de correos electrónicos.
-
-
-
-//5. Cada correo debe ser almacenado como un archivo con un nombre identificador
-//único en una carpeta “correos”. Usar el paquete UUID para esto.
-
 const enviar = require('./mailer')
 const url = require('url')
 const http = require('http')
@@ -45,7 +28,7 @@ http
             const utm = data.utm.valor
             const mensaje = `El valor del dolar el día de hoy es: ${dolar} <br> El valor del euro el día de hoy es: ${euro} <br> El valor del uf el día de hoy es: ${uf} <br> El valor del utm el día de hoy es: ${utm}`
             if (correos !== '' && asunto !== '' && contenido !== '') {
-                enviar(correos.split(','), asunto, contenido + mensaje)
+                enviar(correos.split(','), asunto, contenido + mensaje).then
                 fs.writeFile(`./correos/${uuidv4()}.txt`, `${contenido + mensaje}`, (err) => { //./correos/ sirve para guardar los archivos creados en carpeta correos
                     if (err) console.log(err)
                     else console.log('Archivo creado')

@@ -1,0 +1,1 @@
+<p><br></p>El valor del dolar el día de hoy es: 867.93 <br> El valor del euro el día de hoy es: 899.78 <br> El valor del uf el día de hoy es: 32431.33 <br> El valor del utm el día de hoy es: 56762
